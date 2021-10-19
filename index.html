@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="main">
+    <div class="container">
+        <form action="/" id="forms" method="POST">
+            <h2 style="margin-left: 45px;">.\ttic</h2>
+            <h2 style="margin-left: 30px;">Schedule an Online Notary Now</h2>
+        <label for="Fname" >Full Name</label>
+        <br>
+        <div>
+        <input type="text" id="name" placeholder="Input text with label">
+    </div>    
+    <br>
+    <label for="Email">Email</label>
+    <br>
+    <div>
+      <input type="email" id="email" placeholder="Input text with label">
+    </div> 
+    <br>
+    <label for="phone">Phone Number</label>
+    <br>
+    <div>
+        <input type="tel" id="phoneno" placeholder="Input text with label">
+    </div>
+    <br>
+    <div class="s1">
+    <label for="options">How many Notarisations</label>
+    <select name="notarisations" id="drop1">
+        <option value="value" selected>Select</option>
+        <option value="opt1">Option 1</option>
+        <option value="opt2">Option 2</option>
+        <option value="opt3">Option 3</option>
+    </select>
+</div>
+<br>
+<div class="s2">
+    <label for="options">How many Signers</label>
+    <select name="notarisations" id="drop2">
+        <option value="value" selected>Select</option>
+        <option value="opt1">Option 1</option>
+        <option value="opt2">Option 2</option>
+        <option value="opt3">Option 3</option>
+    </select>
+</div>
+<br>
+<button type="button" id="btnFetch" class="spinner-button btn btn-primary mb-2">Save and Continue</button>
+        </form>
+    </div>
+    <div class="image">
+        <img src="Screenshot (334).png" alt="">
+    </div>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#btnFetch").click(function() {
+            // disable button
+            $(this).prop("disabled", true);
+            // add spinner to button
+            $(this).html(
+            '<i class="fa fa-circle-o-notch fa-spin"></i> loading...'
+            );
+            });
+            });
+
+
+
+           const savebutton= document.getElementById('btnfetch');
+
+            var frm = document.getElementById("forms");
+     frm.addEventListener("submit",function(e){
+     e.preventDefault();
+     var name = document.getElementById("name").value;
+     var email = document.getElementById("email").value;
+     var phn = document.getElementById("phno").value;
+     var signers = document.getElementById("selec1").value;
+     var notarisations = document.getElementById("selec2").value;
+    //  var cpassword = document.getElementById("confpass").value;
+     var data = {
+                    "name": name,
+                    "email": email,
+                    "phoneNumber": phn,
+                    "noOfSigners": signers,
+                    "noOfNotarizations":notarizations
+             };
+
+         fetch('https://api-notarize.herokuapp.com/customer/createPublicOrder', {
+         method: 'POST',
+         headers: {
+         'Content-Type': 'application/json',
+          },
+         body: JSON.stringify(data),
+         credentials: "include"
+         })
+         .then(response => response.json())
+         .then(data => {
+        //    document.getElementById("warningmsg").innerHTML = data.message;
+        //    $("#warningmsg").show();
+           console.log('Success:', data);	
+           if(success === "true")
+           {
+            window.location.href="successpage.html";
+          }	
+        })
+        .catch((error) => {
+        console.error('Error:', error);
+        });
+        });
+
+        </script>
+</body>
+</html>

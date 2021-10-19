@@ -1,0 +1,74 @@
+
+    .main{
+    display: flex;
+        border: 2px solid pink;
+        width: 872px;
+        margin-left: 19%;
+    margin-top: 7%;
+    }
+    #drop1{
+        margin-left: 12%;
+        border: 2px solid blue;
+        width: 102px;
+    height: 25px;
+    color: blue;
+    }
+    #drop2{
+        margin-left: 23% ;
+        border: 2px solid blue;
+        width: 102px;
+    height: 25px;
+    color: blue;
+    }
+    #btnFetch{
+        float: right;
+        position: relative;
+    top: 16px;
+    left: -40px;
+    background: teal;
+    border: none;
+    height: 33px;
+    border-radius: 6px;
+    color: white;
+    }
+    .image img{
+    margin-left: 10%;
+        height: 510px;
+    width: 385px;
+    }
+    #name{
+        border: none;
+        border-bottom: 1px dotted gray;
+        width: 330px;
+        line-height: 3;
+        margin-left: 25px;
+        outline: none;
+    }
+    #email{
+        border: none;
+        border-bottom: 1px dotted gray;
+        width: 330px;
+        line-height: 3;
+        margin-left: 25px;
+        outline: none;
+    }
+    #phoneno{
+        border: none;
+        border-bottom: 1px dotted gray;
+        width: 330px;
+        line-height: 3;
+        margin-left: 25px;
+        outline: none;
+    }
+    .s1 label{
+        font-weight: bold;
+    }
+    .s2 label{
+        font-weight: bold;
+    }
+    label{
+        margin-left: 25px;
+    }
+    #forms{
+        padding: 0 44px;
+    }
